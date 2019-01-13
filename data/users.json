@@ -1,0 +1,18 @@
+{
+	"admin": {
+		"username": "admin",
+		"password": "admin",
+		"firstname": "Slobodan",
+		"lastname": "Dan",
+		"isadmin": true,
+		"deleted": false
+	},
+	"dan": {
+		"username": "dan",
+		"password": "dan",
+		"firstname": "Slobodan",
+		"lastname": "Dan",
+		"isadmin": false,
+		"deleted": false
+	}
+}
