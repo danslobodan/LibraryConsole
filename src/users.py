@@ -1,9 +1,25 @@
 import repo
+import menu
 
 USERS = "users"
 requiredFields = [ "username", "password", "firstname", "lastname" ]
 
 users = repo.load("users")
+menu.registerHandler("addUser", users.AddUserMenu)
+
+def AddUserMenu():
+	username = input("username: ")
+	password = input("password: ")
+	firstname = input("firstname: ")
+	lastname = input("lastname: ")
+	user = {
+		"username" : username,
+		"password" : password,
+		"firstname" : firstname,
+		"lastname" : lastname
+	}
+	if not add(user):
+		AddUserMenu()
 
 def add(user):
 	if not repo.validate(user, requiredFields):

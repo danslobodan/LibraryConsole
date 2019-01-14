@@ -1,0 +1,36 @@
+{
+	"login" : {
+		"title" : "Login",
+		"options" : {
+			"1" : { "text" : "Login", "menu" : "librarian" },
+			"2" : { "text" : "Exit program" , "menu" : "exit" }
+		}
+	},
+	"librarian" : {
+		"title" : "Main menu",
+		"options" : {
+			"1" : { "text" : "Add or modify books", "menu" : "modifyBook" },
+			"2" : { "text": "Add or modify users", "menu" : "modifyUser" },
+			"3" : { "text" : "Logout", "menu" : "login" }
+		}
+	},
+	"modifyBook" : {
+		"title" : "Add or modify books",
+		"options" : {
+			"1" : { "text" : "Add book", "menu" : "addBook" },
+			"2" : { "text" : "Edit book", "menu" : "editBook" },
+			"3" : { "text" : "Back", "menu" : "librarian" }
+		}
+	},
+	"modifyUser" : {
+		"title" : "Add or modify users",
+		"options" : {
+			"1" : { "text" : "Add user", "menu" : "addUser" },
+			"2" : { "text" : "Remove user", "menu" : "removeUser" },
+			"3" : { "text" : "Back", "menu" : "librarian" }
+		}
+	},
+	"addUser" : {
+		"returnTo" : "modifyUser"
+	}
+}
