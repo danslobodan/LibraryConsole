@@ -39,19 +39,6 @@ def takeInput(menu):
 	
 	return num
 
-def validateInput(inputName):
-
-	value = input(inputName + ": ")
-	if not value:
-		print(inputName, "is required.")
-		return ""
-		
-	if value.isspace():
-		print(inputName, "must contain characters other than whitespace.")
-		return ""
-
-	return value
-
 def choseMenu(menu):
 	printMenu(menu)
 	choice = takeInput(menu)
