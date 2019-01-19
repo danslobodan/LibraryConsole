@@ -2,8 +2,8 @@ import menu
 
 print("Welcome to the library!")
 
-nextMenu = menu.show("login")
+nextMenu = menu.showMenu("login")
 while nextMenu != "exit":
-	nextMenu = menu.show(nextMenu)
+	nextMenu = menu.showMenu(nextMenu)
 
 print("Goodbye!")

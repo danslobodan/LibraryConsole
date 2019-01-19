@@ -2,11 +2,19 @@
 	"login" : {
 		"title" : "Login",
 		"options" : {
-			"1" : { "text" : "Login", "menu" : "librarian" },
+			"1" : { "text" : "Login", "menu" : "tryLogin" },
 			"2" : { "text" : "Exit program" , "menu" : "exit" }
 		}
 	},
-	"librarian" : {
+	"user" : {
+		"title" : "Main menu",
+		"options" : {
+			"1" : { "text" : "Rent a book", "menu" : "rentBook" },
+			"2" : { "text": "Return a book", "menu" : "returnBook" },
+			"3" : { "text" : "Logout", "menu" : "login" }
+		}
+	},
+	"admin" : {
 		"title" : "Main menu",
 		"options" : {
 			"1" : { "text" : "Add or modify books", "menu" : "modifyBook" },
@@ -19,18 +27,16 @@
 		"options" : {
 			"1" : { "text" : "Add book", "menu" : "addBook" },
 			"2" : { "text" : "Edit book", "menu" : "editBook" },
-			"3" : { "text" : "Back", "menu" : "librarian" }
+			"3" : { "text" : "Back", "menu" : "admin" }
 		}
 	},
 	"modifyUser" : {
 		"title" : "Add or modify users",
 		"options" : {
 			"1" : { "text" : "Add user", "menu" : "addUser" },
-			"2" : { "text" : "Remove user", "menu" : "removeUser" },
-			"3" : { "text" : "Back", "menu" : "librarian" }
+			"2" : { "text" : "Edit user", "menu" : "editUser" },
+			"3" : { "text" : "Remove user", "menu" : "removeUser" },
+			"4" : { "text" : "Back", "menu" : "admin" }
 		}
-	},
-	"addUser" : {
-		"returnTo" : "modifyUser"
 	}
 }

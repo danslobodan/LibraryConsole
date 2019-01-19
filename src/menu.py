@@ -1,10 +1,19 @@
 import repo
 
-menus = repo.load("menus")
+MENUS = "menus"
 handlers = {}
 
-def registerHandler(menu, handler):
-	handlers[menu] = handler
+def getMenus():
+	return repo.getRepo(MENUS)
+
+def getMenu(name):
+	return getMenus()[name]
+
+def exists(menuName):
+	return menuName in getMenus()
+
+def registerHandler(menuName, handler):
+	handlers[menuName] = handler
 
 def printMenu(menu):
 	print(menu["title"])
@@ -13,7 +22,6 @@ def printMenu(menu):
 		print(i + ".", options[i]["text"])
 
 def takeInput(menu):
-	printMenu(menu)
 	num = input("Please enter a number: ")
 	
 	if not num.isdigit():
@@ -26,20 +34,25 @@ def takeInput(menu):
 	
 	return num
 
-def show(menuName):
-
-	menu = menus[menuName]
-
-	if "returnTo" in menu:
-		return menu["returnTo"]
-
+def choseMenu(menu):
+	printMenu(menu)
 	choice = takeInput(menu)
+	return choice
+
+def showMenu(name):
+
+	if name in handlers:
+		return handlers[name]()
+
+	if not exists(name):
+		print("Menu not found. Exiting")
+		return "exit"
+
+	menu = getMenu(name)
+	choice = choseMenu(menu)
 	while choice == 0:
-		choice = takeInput(menu)
+		choice = choseMenu(menu)
 
 	chosenMenu = menu["options"][choice]["menu"]
-
-	if chosenMenu in handlers:
-		handlers[chosenMenu]()
-
+	
 	return chosenMenu

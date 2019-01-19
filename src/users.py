@@ -1,79 +1,46 @@
 import repo
 import menu
+import credentials
 
 USERS = "users"
-requiredFields = [ "username", "password", "firstname", "lastname" ]
 
-users = repo.load("users")
-menu.registerHandler("addUser", users.AddUserMenu)
+def getUsers():
+	return repo.getRepo(USERS)
 
-def AddUserMenu():
-	username = input("username: ")
-	password = input("password: ")
-	firstname = input("firstname: ")
-	lastname = input("lastname: ")
-	user = {
-		"username" : username,
-		"password" : password,
-		"firstname" : firstname,
-		"lastname" : lastname
-	}
-	if not add(user):
-		AddUserMenu()
+def getUser(id):
+	return getUsers()[id]
 
-def add(user):
-	if not repo.validate(user, requiredFields):
-		return False
-	
-	username = user["username"]
-	if username in users and not users[username]["deleted"]:
-		print("Username", user["username"], "already exists.")
-		return False
+def getUserByUsername(username):
+	for user in getUsers().values():
+		if user["username"] == username:
+			return user
 
-	user["deleted"] = False
-	repo.addOrUpdate(USERS, users, user["username"], user)
-	return True
+def isUser(username):
+	for user in getUsers().values():
+		if user["username"] == username:
+			return True
+	return False
 
-def addUser(user):
-	user["isadmin"] = False
-	return add(user)
+def addOrUpdate(id, user):
+	repo.addOrUpdate(USERS, id, user)
 
-def addAdmin(user):
-	user["isadmin"] = True
-	return add(user)
+def updateProperty(id, prop, value):
+	repo.updateProperty(USERS, id, prop, value)
 
-def get(username):
-	if username not in users:
-		print("User", username, "does not exist.")
-		return
+def exists(id):
+	repo.exists(USERS, id)
 
-	return users[username]
+def remove(id):
+	return repo.exists(USERS, id)
 
-def update(user):
-	if not repo.validate(user, requiredFields):
-		return False
 
-	username = user["username"]
-	if username not in users:
-		print("User", username, "does not exist.")
-		return False
-	
-	if users[username]["deleted"]:
-		print("User", username, "is deleted.")
-		return False
+def addUser(id, user):
+	addOrUpdate(id, user)
 
-	repo.addOrUpdate(USERS, users, username, user)
-	return True
+def isDeleted(id):
+	return getUser(id)["deleted"]
 
-def remove(username):
 
-	if username not in users:
-		print("User", username, "does not exist.")
-		return False
-		
-	if users[username]["deleted"]:
-		print("User", username, "is already deleted.")
-		return False
 
-	repo.updateProperty(USERS, users, username, "deleted", True)
-	return True
+
+
