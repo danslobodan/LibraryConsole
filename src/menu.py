@@ -3,6 +3,9 @@ import repo
 MENUS = "menus"
 handlers = {}
 
+def printLine():
+	print("-" * 100)
+
 def getMenus():
 	return repo.getRepo(MENUS)
 
@@ -16,10 +19,12 @@ def registerHandler(menuName, handler):
 	handlers[menuName] = handler
 
 def printMenu(menu):
+	printLine()
 	print(menu["title"])
 	options = menu["options"]
 	for i in options:
 		print(i + ".", options[i]["text"])
+	printLine()
 
 def takeInput(menu):
 	num = input("Please enter a number: ")
@@ -33,6 +38,19 @@ def takeInput(menu):
 		return 0
 	
 	return num
+
+def validateInput(inputName):
+
+	value = input(inputName + ": ")
+	if not value:
+		print(inputName, "is required.")
+		return ""
+		
+	if value.isspace():
+		print(inputName, "must contain characters other than whitespace.")
+		return ""
+
+	return value
 
 def choseMenu(menu):
 	printMenu(menu)
