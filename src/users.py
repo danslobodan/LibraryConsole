@@ -28,7 +28,7 @@ def updateProperty(id, prop, value):
 	repo.updateProperty(USERS, id, prop, value)
 
 def exists(id):
-	repo.exists(USERS, id)
+	return repo.exists(USERS, id)
 
 def remove(id):
 	return repo.exists(USERS, id)
