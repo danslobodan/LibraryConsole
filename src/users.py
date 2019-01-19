@@ -31,8 +31,7 @@ def exists(id):
 	return repo.exists(USERS, id)
 
 def remove(id):
-	return repo.exists(USERS, id)
-
+	repo.updateProperty(USERS, id, "deleted", True)
 
 def addUser(id, user):
 	addOrUpdate(id, user)
