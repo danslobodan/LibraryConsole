@@ -10,10 +10,11 @@ def getAdmins():
 def getAdmin(id):
 	return getAdmins()[id]
 
-def getAdminByUsername(username):
-	for admin in getAdmins().values():
-		if admin["username"] == username:
-			return admin
+def getIdByUsername(username):
+	admins = getAdmins()
+	for id in admins:
+		if admins[id]["username"] == username:
+			return id
 
 def isAdmin(username):
 	for admin in getAdmins().values():

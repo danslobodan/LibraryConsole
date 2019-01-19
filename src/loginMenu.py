@@ -2,11 +2,13 @@ import menu
 import credentials
 import users
 import admins
+import session
 
 LOGIN_ERROR = "Invalid username or password."
 
 def Login():
 
+    session.currentUser = ""
     username = input("Username: ")
     password = input("Password: ")
 
@@ -20,9 +22,11 @@ def Login():
         return "login"
 
     if admins.isAdmin(username):
+        session.currentUser = username
         return "admin"
 
     if users.isUser(username):
+        session.currentUser = username
         return "user"
 
     print("Error. No user with username: ", username)

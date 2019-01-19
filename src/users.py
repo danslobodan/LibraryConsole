@@ -10,10 +10,11 @@ def getUsers():
 def getUser(id):
 	return getUsers()[id]
 
-def getUserByUsername(username):
-	for user in getUsers().values():
-		if user["username"] == username:
-			return user
+def getIdByUsername(username):
+	users = getUsers()
+	for id in users:
+		if users[id]["username"] == username:
+			return id
 
 def isUser(username):
 	for user in getUsers().values():
@@ -38,8 +39,3 @@ def addUser(id, user):
 
 def isDeleted(id):
 	return getUser(id)["deleted"]
-
-
-
-
-
