@@ -24,7 +24,7 @@ def addOrUpdate(name, key, value):
 
 def updateProperty(name, key, prop, value):
 	repo = getRepo(name)
-	if key in repo and prop in repo[name]:
+	if key in repo and prop in repo[key]:
 		repo[key][prop] = value
 	save(name)
 
@@ -50,3 +50,10 @@ def validate(field, value):
 		return False
 
 	return True
+
+key = 2
+name = "users"
+users = getRepo(name)
+print(exists(name, key))
+key = str(key)
+print(exists(name, key))
