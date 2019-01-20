@@ -1,9 +1,11 @@
-import view
 import menu
 import users
 import admins
-import session
 import credentials
+import session
+
+import view
+import listView
 import credentialView
 import userView
 
@@ -15,7 +17,7 @@ def AddUser():
 	print("Enter user details: ")
 
 	cred = credentialView.getCredentials(credentials.getCredentials())
-	id = userView.getUserId(users.getUsers())
+	id = listView.getId(users.getUsers())
 	user = userView.getUser()
 
 	user["username"] = cred["username"]
@@ -33,7 +35,7 @@ def AddAdmin():
 	print("Enter admin details: ")
 
 	cred = credentialView.getCredentials(credentials.getCredentials())
-	id = userView.getUserId(admins.getAdmins())
+	id = listView.getId(admins.getAdmins())
 	user = userView.getUser()
 
 	user["username"] = cred["username"]
@@ -49,9 +51,13 @@ def RemoveUser():
 	print("Chose user to remove: ")
 	
 	activeUsers = users.getActiveUsers()
-	userView.printUsers(activeUsers)
-	id = userView.choseUser(activeUsers)
+	listView.printItems(activeUsers, userView.printUser)
+	id = listView.choseItem(activeUsers)
 	if id == 0:
+		return ADMIN_MENU
+
+	if users.hasBooks(id):
+		print("Cannot delete a user that still had books lended.")
 		return ADMIN_MENU
 
 	users.remove(id)
