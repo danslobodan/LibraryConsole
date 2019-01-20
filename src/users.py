@@ -47,6 +47,7 @@ def getProperty(id, prop):
 	user = getUser(id)
 	if prop not in user:
 		print("Error. User", id, "doesn't have property", prop)
+		return None
 
 	return user[prop]
 
