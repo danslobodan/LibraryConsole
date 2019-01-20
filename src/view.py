@@ -25,7 +25,7 @@ def assertNumericInput(inputName):
 
 def validateInput(inputName):
 
-	value = str(input(inputName + ": "))
+	value = input(inputName + ": ")
 	if not value:
 		print(inputName, "is required.")
 		return ""
