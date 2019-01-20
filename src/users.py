@@ -1,6 +1,6 @@
 import repo
 import menu
-import credentials
+import search
 
 USERS = "users"
 
@@ -75,6 +75,11 @@ def isDeleted(id):
 def isDeletedUsername(username):
 	id = getIdByUsername(username)
 	return isDeleted(id)
+
+def find(searchString):
+	users = getUsers()
+	criteria = [ "firstname", "lastname" ]
+	return search.find(searchString, users, criteria, True)
 
 def hasBooks(id):
 	books = getBooks(id)
