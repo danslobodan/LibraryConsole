@@ -45,6 +45,10 @@ def total(id):
     tot = int(tot)
     return tot
 
+def canLend(id):
+    av = available(id)
+    return av > 0
+
 def lend(id):
     av = available(id)
     if av == 0:

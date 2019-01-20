@@ -138,6 +138,10 @@ def LendBook():
 	if bookID == 0:
 		return ADMIN_MENU
 
+	if not books.canLend(bookID):
+		print("No copies currently available.")
+		return ADMIN_MENU
+	
 	criteria = [ "firstname" , "lastname" ]
 	fUsers = searchView.find("users", users.getUsers(), criteria, True)
 	if len(fUsers) == 0:
@@ -149,6 +153,7 @@ def LendBook():
 		return ADMIN_MENU
 
 	if lending.lendBook(userID, bookID):
+		books.lend(bookID)
 		print("Lended book", bookID, "to user", userID)
 	else:
 		print("User has already lended that book.")
@@ -178,12 +183,13 @@ def ReturnBook():
 
 
 	print("Lended books: ")
-	listView.printItems(bks, booksView.printBook)
+	listView.printItems(bks, booksView.printTitle)
 	bookID = listView.choseItem(bks)
 	if bookID == 0:
 		return ADMIN_MENU
 
 	lending.returnBook(userID, bookID)
+	books.returnBook(bookID)
 	print("Returned book", bookID, "for user", userID)
 
 	return ADMIN_MENU

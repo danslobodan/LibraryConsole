@@ -1,11 +1,14 @@
 import view
 
 def printBook(id, book):
-    print(id + ".", book["title"], "(" + book["year"] + ")")
+    printTitle(id, book)
     print("    Author:", book["author"])
     print("    Total copies:", book["total"])
     print("    Available: ", book["available"])
     view.printLine()
+
+def printTitle(id, book):
+    print(id + ".", book["title"], "(" + book["year"] + ")")
 
 def getBook():
 
