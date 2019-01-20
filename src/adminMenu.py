@@ -18,6 +18,8 @@ def AddUser():
 	id = userView.getUserId(users.getUsers())
 	user = userView.getUser()
 
+	user["username"] = cred["username"]
+	user["deleted"] = False
 	credentials.addOrUpdate(cred["username"], cred["password"])
 	users.addUser(id, user)
 	print("Added user:", cred["username"])
