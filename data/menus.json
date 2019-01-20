@@ -42,5 +42,13 @@
 			"2" : { "text" : "Add admin", "menu" : "addAdmin" },
 			"3" : { "text" : "Back", "menu" : "admin" }
 		}
+	},
+	"bookLending" : {
+		"title" : "Lend or return a book",
+		"options" : {
+			"1" : { "text" : "Lend book", "menu" : "lendBook" },
+			"2" : { "text" : "Return book", "menu" : "returnBook" },
+			"3" : { "text" : "Back", "menu" : "admin" }
+		}
 	}
 }
