@@ -1,7 +1,1 @@
-{
-    "1" : {
-        "username" : "admin",
-        "firstname" : "Slobodan",
-        "lastname": "Dan"
-    }
-}
+{"1": {"username": "admin", "firstname": "Slobodan", "lastname": "Dan"}}

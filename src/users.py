@@ -1,6 +1,6 @@
 import repo
 import menu
-import credentials
+import search
 
 USERS = "users"
 
@@ -16,7 +16,7 @@ def getActiveUsers():
 	return activeUsers
 
 def getUser(id):
-	return getUsers()[id]
+	return repo.getItem(USERS, id)
 
 def getIdByUsername(username):
 	users = getUsers()
@@ -31,7 +31,25 @@ def isUser(username):
 	return False
 
 def addUser(id, user):
-	repo.addOrUpdate(USERS, id, user)
+
+	if id not in getUsers():
+		repo.addOrUpdate(USERS, id, user)
+		return True
+
+	if isDeleted(id):
+		updateProperty(id, "deleted", False)
+		return True
+	
+	print("Error. User ID", id, "already exists.")
+	return False
+
+def getProperty(id, prop):
+	user = getUser(id)
+	if prop not in user:
+		print("Error. User", id, "doesn't have property", prop)
+		return None
+
+	return user[prop]
 
 def updateProperty(id, prop, value):
 	repo.updateProperty(USERS, id, prop, value)
@@ -40,10 +58,16 @@ def exists(id):
 	return repo.exists(USERS, id)
 
 def remove(id):
+
+	if isDeleted(id):
+		print("Error. User", id, "is already deleted.")
+		return False
+
 	repo.updateProperty(USERS, id, "deleted", True)
+	return True
 
 def isDeleted(id):
-	return getUser(id)["deleted"]
+	return getProperty(id , "deleted")
 
 def isDeletedUsername(username):
 	id = getIdByUsername(username)

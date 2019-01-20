@@ -1,3 +1,11 @@
+def printLine():
+	print("-" * 100)
+
+def printTitle(title):
+	printLine()
+	print(title)
+	printLine()
+
 def assertInput(inputName):
 
     value = validateInput(inputName)
@@ -17,7 +25,7 @@ def assertNumericInput(inputName):
 
 def validateInput(inputName):
 
-	value = str(input(inputName + ": "))
+	value = input(inputName + ": ")
 	if not value:
 		print(inputName, "is required.")
 		return ""
@@ -34,5 +42,14 @@ def optionalInput(inputName, value):
 	if not newValue or newValue.isspace():
 		print(inputName, "was skipped.")
 		return value
+
+	return newValue
+
+def optionalNumeric(inputName, value):
+
+	newValue = optionalInput(inputName, value)
+	while not newValue.isnumeric():
+		print(inputName, "must be a number.")
+		newValue = optionalInput(inputName, value)
 
 	return newValue

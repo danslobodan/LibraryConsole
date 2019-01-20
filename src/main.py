@@ -1,9 +1,11 @@
 import menu
+import view
 import loginMenu
 import adminMenu
 import profileMenu
+import userMenu
 
-print("Welcome to the library!")
+view.printTitle("Welcome to the library!")
 
 nextMenu = menu.showMenu("login")
 while nextMenu != "exit":

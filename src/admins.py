@@ -8,8 +8,8 @@ def getAdmins():
 	return repo.getRepo(ADMINS)
 
 def getAdmin(id):
-	return getAdmins()[id]
-
+	return repo.getItem(ADMINS, id)
+	
 def getIdByUsername(username):
 	admins = getAdmins()
 	for id in admins:

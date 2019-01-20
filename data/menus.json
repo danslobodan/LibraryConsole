@@ -9,8 +9,8 @@
 	"user" : {
 		"title" : "Main menu",
 		"options" : {
-			"1" : { "text" : "Lended books", "menu" : "lendedBooks" },
-			"2" : { "text": "Browse library", "menu" : "searchBooks" },
+			"1" : { "text" : "Lended books", "menu" : "userBooks" },
+			"2" : { "text": "Browse library", "menu" : "userSearchBooks" },
 			"3" : { "text" : "Edit profile" , "menu" : "editProfile" },
 			"4" : { "text" : "Logout", "menu" : "login" }
 		}
@@ -22,7 +22,7 @@
 			"2" : { "text" : "Add admin or user", "menu" : "addUsers" },
 			"3" : { "text": "Edit profile", "menu" : "editProfile" },
 			"4" : { "text" : "Book lending", "menu" : "bookLending" },
-			"5" : { "text" : "Scrap book", "menu" : "removeBook" },
+			"5" : { "text" : "Scrap books", "menu" : "scrapBook" },
 			"6" : { "text" : "Remove user", "menu" : "removeUser" },
 			"7" : { "text" : "Logout", "menu" : "login" }
 		}
@@ -40,6 +40,14 @@
 		"options" : {
 			"1" : { "text" : "Add user", "menu" : "addUser" },
 			"2" : { "text" : "Add admin", "menu" : "addAdmin" },
+			"3" : { "text" : "Back", "menu" : "admin" }
+		}
+	},
+	"bookLending" : {
+		"title" : "Lend or return a book",
+		"options" : {
+			"1" : { "text" : "Lend book", "menu" : "lendBook" },
+			"2" : { "text" : "Return book", "menu" : "returnBook" },
 			"3" : { "text" : "Back", "menu" : "admin" }
 		}
 	}
