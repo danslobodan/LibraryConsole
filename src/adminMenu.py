@@ -4,6 +4,7 @@ import users
 import admins
 import credentials
 import books
+import lending
 
 import session
 
@@ -59,7 +60,7 @@ def RemoveUser():
 	if id == 0:
 		return ADMIN_MENU
 
-	if users.hasBooks(id):
+	if lending.hasBooks(id):
 		print("Cannot delete a user that still had books lended.")
 		return ADMIN_MENU
 
@@ -147,7 +148,7 @@ def LendBook():
 	if userID == 0:
 		return ADMIN_MENU
 
-	if users.addBook(userID, bookID):
+	if lending.lendBook(userID, bookID):
 		print("Lended book", bookID, "to user", userID)
 	else:
 		print("User has already lended that book.")
@@ -166,11 +167,11 @@ def ReturnBook():
 	if userID == 0:
 		return ADMIN_MENU
 
-	if not users.hasBooks(userID):
+	if not lending.hasBooks(userID):
 		print("User has not lended any books.")
 		return ADMIN_MENU
 
-	lended = users.getBooks(userID)
+	lended = lending.getBooks(userID)
 	bks = {}
 	for id in lended:
 		bks[id] = books.getBook(id)
@@ -182,8 +183,12 @@ def ReturnBook():
 	if bookID == 0:
 		return ADMIN_MENU
 
-	users.removeBook(userID, bookID)
+	lending.returnBook(userID, bookID)
 	print("Returned book", bookID, "for user", userID)
+
+	return ADMIN_MENU
+
+def ScrapBook():
 
 	return ADMIN_MENU
 
@@ -194,3 +199,4 @@ menu.registerHandler("addBook", AddBook)
 menu.registerHandler("editBook", EditBook)
 menu.registerHandler("lendBook", LendBook)
 menu.registerHandler("returnBook", ReturnBook)
+menu.registerHandler("scrapBook", ScrapBook)
