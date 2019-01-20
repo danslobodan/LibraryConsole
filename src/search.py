@@ -1,8 +1,8 @@
-def find(searchString, items, criteria, matchID = False):
+def find(searchString, items, criteria, matchID):
     found = {}
     for id in items:
         item = items[id]
-        if ((matchID and searchString in id)
+        if ((matchID and searchString.lower() in id.lower())
             or match(item, criteria, searchString)):
             found[id] = item
     
