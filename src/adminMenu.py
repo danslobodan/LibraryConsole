@@ -17,8 +17,7 @@ ADMIN_MENU = "admin"
 
 def AddUser():
 
-	view.printLine()
-	print("Enter user details: ")
+	view.printTitle("Enter user details: ")
 
 	cred = credentialView.getCredentials(credentials.getCredentials())
 	id = listView.getId(users.getUsers())
@@ -35,8 +34,7 @@ def AddUser():
 
 def AddAdmin():
 
-	view.printLine()
-	print("Enter admin details: ")
+	view.printTitle("Enter admin details: ")
 
 	cred = credentialView.getCredentials(credentials.getCredentials())
 	id = listView.getId(admins.getAdmins())
@@ -51,8 +49,7 @@ def AddAdmin():
 
 def RemoveUser():
 
-	view.printLine()
-	print("Chose user to remove: ")
+	view.printTitle("Chose user to remove: ")
 	
 	activeUsers = users.getActiveUsers()
 	listView.printItems(activeUsers, userView.printUser)
