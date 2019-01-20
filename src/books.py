@@ -93,11 +93,3 @@ def match(book, criteria, searchString):
     
     return False
 
-def adminSearch(searchString):
-    criteria = [ "author", "year" ]
-    return search(searchString, criteria, True)
-
-def userSearch(searchString):
-    criteria = [ "title", "author" ]
-    return search(searchString, criteria)
-
