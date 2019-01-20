@@ -7,6 +7,14 @@ USERS = "users"
 def getUsers():
 	return repo.getRepo(USERS)
 
+def getActiveUsers():
+	users = getUsers()
+	activeUsers = {}
+	for id in users:
+		if not isDeleted(id):
+			activeUsers[id] = users[id]
+	return activeUsers
+
 def getUser(id):
 	return getUsers()[id]
 

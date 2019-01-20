@@ -30,13 +30,12 @@ def RemoveUser():
 
 	menu.printLine()
 	print("Chose user to remove: ")
-	userView.printUsers(users.getUsers())
-	id = userView.choseUser(users.getUsers())
+	activeUsers = users.getActiveUsers()
+	userView.printUsers(activeUsers)
+	id = userView.choseUser(activeUsers)
 	if id == 0:
 		return ADMIN_MENU
 
-	user = users.getUser(id)
-	credentials.remove(user["username"])
 	users.remove(id)
 
 	return ADMIN_MENU
