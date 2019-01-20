@@ -44,3 +44,12 @@ def optionalInput(inputName, value):
 		return value
 
 	return newValue
+
+def optionalNumeric(inputName, value):
+
+	newValue = optionalInput(inputName, value)
+	while not newValue.isnumeric():
+		print(inputName, "must be a number.")
+		newValue = optionalInput(inputName, value)
+
+	return newValue

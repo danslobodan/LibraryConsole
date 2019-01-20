@@ -76,7 +76,59 @@ def AddBook():
 
 	return ADMIN_MENU
 
+def EditBook():
+
+	searchCriteria = [ "author" , "year" ]
+	searchString = input("Enter id, author or year: ")
+	if not searchString or searchString.isspace():
+		print("Canceled edit.")
+		return ADMIN_MENU
+
+	found = books.search(searchString, searchCriteria, True)
+	if len(found) == 0:
+		print("No books match the search criteria.")
+		return ADMIN_MENU
+
+	listView.printItems(found, booksView.printBook)
+	id = listView.choseItem(found)
+	if id == 0:
+		print("Canceled edit.")
+		return ADMIN_MENU
+
+	book = books.getBook(id)
+	view.printTitle("Editing book:")
+	booksView.printBook(id, book)
+	print("Press <enter> to skip.")
+	
+	title = view.optionalInput("Title", book["title"])
+	books.updateProperty(id, "title", title)
+
+	author = view.optionalInput("Author", book["author"])
+	books.updateProperty(id, "author", author)
+
+	year = view.optionalNumeric("Year", book["year"])
+	books.updateProperty(id, "year", year)
+
+	total = view.optionalNumeric("Total copies", book["total"])
+	books.updateProperty(id, "total", total)
+
+	available = view.optionalNumeric("Available copies", book["available"])
+	while int(total) < int(available):
+		print("Maximum available copies can be", total)
+		available = view.optionalNumeric("Available copies", book["available"])
+
+	book = {
+		"title" : title,
+		"author" : author,
+		"year" : year,
+		"total" : total,
+		"available" : available
+	}
+	booksView.printBook(id, book)
+
+	return ADMIN_MENU
 menu.registerHandler("addUser", AddUser)
 menu.registerHandler("addAdmin", AddAdmin)
 menu.registerHandler("removeUser", RemoveUser)
 menu.registerHandler("addBook", AddBook)
+menu.registerHandler("editBook", EditBook)
