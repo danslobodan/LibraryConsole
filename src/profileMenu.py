@@ -16,7 +16,7 @@ def editUser(username):
     id = users.getIdByUsername(username)
     user = users.getUser(id)
 
-    menu.printLine()
+    view.printLine()
     print("Editing user: ")
     userView.printUser(id, user)
     print("Press enter to skip.")
@@ -35,7 +35,7 @@ def editAdmin(username):
     id = admins.getIdByUsername(username)
     user = admins.getAdmin(id)
 
-    menu.printLine()
+    view.printLine()
     print("Editing user: ")
     userView.printUser(id, user)
     print("Press enter to skip.")
