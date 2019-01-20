@@ -22,7 +22,7 @@ def Login():
         return "login"
 
     if users.isUser(username):
-        if users.isDeleted(users.getIdByUsername(username)):
+        if users.isDeletedUsername(username):
             print(LOGIN_ERROR)
             return "login"
         else:

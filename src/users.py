@@ -47,3 +47,7 @@ def addUser(id, user):
 
 def isDeleted(id):
 	return getUser(id)["deleted"]
+
+def isDeletedUsername(username):
+	id = getIdByUsername(username)
+	return isDeleted(id)
