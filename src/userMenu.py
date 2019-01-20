@@ -22,7 +22,7 @@ def SearchBooks():
         view.printTitle("Search results:")
         listView.printItems(found, booksView.printBook)
     else:
-        print("Found no books for query", searchString)
+        print("No books match the search criteria.", searchString)
 
     return USER_MENU
 

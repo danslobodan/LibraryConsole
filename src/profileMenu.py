@@ -16,8 +16,7 @@ def editUser(username):
     id = users.getIdByUsername(username)
     user = users.getUser(id)
 
-    view.printLine()
-    print("Editing user: ")
+    view.printTitle("Editing user: ")
     userView.printUser(id, user)
     print("Press enter to skip.")
 
@@ -35,10 +34,9 @@ def editAdmin(username):
     id = admins.getIdByUsername(username)
     user = admins.getAdmin(id)
 
-    view.printLine()
-    print("Editing user: ")
+    view.printTitle("Editing user: ")
     userView.printUser(id, user)
-    print("Press enter to skip.")
+    print("Press <enter> to skip.")
 
     firstname = view.optionalInput("First name", user["firstname"])
     admins.updateProperty(id, "firstname", firstname)
