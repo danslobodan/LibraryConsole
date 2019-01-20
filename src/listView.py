@@ -44,3 +44,4 @@ def choseItem(items):
 def printItems(items, showFun):
     for key in items:
         showFun(key, items[key])
+    view.printLine()

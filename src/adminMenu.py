@@ -175,6 +175,8 @@ def ReturnBook():
 	for id in lended:
 		bks[id] = books.getBook(id)
 
+
+	print("Lended books: ")
 	listView.printItems(bks, booksView.printBook)
 	bookID = listView.choseItem(bks)
 	if bookID == 0:
