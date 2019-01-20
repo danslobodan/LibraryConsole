@@ -5,4 +5,5 @@ def printBook(id, book):
     print("    Author:", book["author"])
     print("    Total copies:", book["total"])
     print("    Available: ", book["available"])
+    view.printLine()
 
