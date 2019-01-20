@@ -7,3 +7,17 @@ def printBook(id, book):
     print("    Available: ", book["available"])
     view.printLine()
 
+def getBook():
+
+    title = view.assertInput("Title")
+    author = view.assertInput("Author")
+    year = view.assertNumericInput("Year")
+    total = view.assertNumericInput("Total copies")
+
+    return {
+        "title": title,
+        "author" : author,
+        "year" : year,
+        "total" : total,
+        "available" : total
+    }

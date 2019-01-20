@@ -1,13 +1,17 @@
 import menu
+# repos
 import users
 import admins
 import credentials
+import books
 import session
 
+# views
 import view
 import listView
 import credentialView
 import userView
+import booksView
 
 ADMIN_MENU = "admin"
 
@@ -64,7 +68,18 @@ def RemoveUser():
 
 	return ADMIN_MENU
 
+def AddBook():
+
+	id = listView.getId(books.getBooks())
+	book = booksView.getBook()
+
+	books.add(id, book)
+	print("Added book: ")
+	booksView.printBook(id, book)
+
+	return ADMIN_MENU
 
 menu.registerHandler("addUser", AddUser)
 menu.registerHandler("addAdmin", AddAdmin)
 menu.registerHandler("removeUser", RemoveUser)
+menu.registerHandler("addBook", AddBook)
