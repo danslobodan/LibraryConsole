@@ -58,9 +58,6 @@ def exists(id):
 	return repo.exists(USERS, id)
 
 def remove(id):
-	if hasBooks(id):
-		print("Error. Cannot delete a user that has lended books.")
-		return False
 
 	if isDeleted(id):
 		print("Error. User", id, "is already deleted.")
@@ -75,29 +72,3 @@ def isDeleted(id):
 def isDeletedUsername(username):
 	id = getIdByUsername(username)
 	return isDeleted(id)
-
-def hasBooks(id):
-	books = getBooks(id)
-	return len(books) > 0
-
-def getBooks(id):
-	return getProperty(id, "books")
-
-def addBook(userID, bookID):
-	books = getBooks(userID)
-	if bookID in books:
-		return False
-
-	books.append(bookID)
-	updateProperty(userID, "books", books)
-	return True
-
-def removeBook(userID, bookID):
-	books = getBooks(userID)
-	if bookID not in books:
-		print("Error. User", userID, "doesn't have book", bookID)
-		return False
-	
-	books.remove(bookID)
-	updateProperty(userID, "books", books)
-	return True
