@@ -30,7 +30,7 @@ def validateInput(inputName):
 
 def optionalInput(inputName, value):
 
-	newValue = input(inputName)
+	newValue = input(inputName + ": ")
 	if not newValue or newValue.isspace():
 		print(inputName, "was skipped.")
 		return value
