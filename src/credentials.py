@@ -5,7 +5,7 @@ CREDENTIALS = "credentials"
 def getCredentials():
 	return repo.getRepo(CREDENTIALS)
 
-def addOrUpdate(username, password):
+def add(username, password):
 	if not username:
 		print("Username cannot be empty.")
 		return False
@@ -20,6 +20,13 @@ def addOrUpdate(username, password):
 
 	repo.addOrUpdate(CREDENTIALS, username, password)
 	return True
+
+def updatePassword(username, password):
+	if not password:
+		print("Password cannot be empty.")
+		return False
+
+	repo.addOrUpdate(CREDENTIALS, username, password)
 
 def getPassword(username):
 	return getCredentials()[username]

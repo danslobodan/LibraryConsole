@@ -20,7 +20,7 @@ def AddUser():
 
 	user["username"] = cred["username"]
 	user["deleted"] = False
-	credentials.addOrUpdate(cred["username"], cred["password"])
+	credentials.add(cred["username"], cred["password"])
 	users.addUser(id, user)
 	print("Added user:", cred["username"])
 
@@ -36,7 +36,7 @@ def AddAdmin():
 	user = userView.getUser()
 
 	user["username"] = cred["username"]
-	credentials.addOrUpdate(cred["username"], cred["password"])
+	credentials.add(cred["username"], cred["password"])
 	admins.addAdmin(id, user)
 	print("Added user:", cred["username"])
 

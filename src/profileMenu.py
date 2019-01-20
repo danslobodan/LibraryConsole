@@ -9,7 +9,7 @@ import userView
 def editPassword(user):
 	password = credentials.getPassword(user["username"])
 	password = view.optionalInput("Password", password)
-	credentials.addOrUpdate(user["username"], password)
+	credentials.updatePassword(user["username"], password)
 
 def editUser(username):
     
