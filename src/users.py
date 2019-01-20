@@ -31,7 +31,24 @@ def isUser(username):
 	return False
 
 def addUser(id, user):
-	repo.addOrUpdate(USERS, id, user)
+
+	if id not in getUsers():
+		repo.addOrUpdate(USERS, id, user)
+		return True
+
+	if isDeleted(id):
+		updateProperty(id, "deleted", False)
+		return True
+	
+	print("Error. User ID", id, "already exists.")
+	return False
+
+def getProperty(id, prop):
+	user = getUser(id)
+	if prop not in user:
+		print("Error. User", id, "doesn't have property", prop)
+
+	return user[prop]
 
 def updateProperty(id, prop, value):
 	repo.updateProperty(USERS, id, prop, value)
@@ -40,11 +57,45 @@ def exists(id):
 	return repo.exists(USERS, id)
 
 def remove(id):
+	if hasBooks(id):
+		print("Error. Cannot delete a user that has lended books.")
+		return False
+
+	if isDeleted(id):
+		print("Error. User", id, "is already deleted.")
+		return False
+
 	repo.updateProperty(USERS, id, "deleted", True)
+	return True
 
 def isDeleted(id):
-	return getUser(id)["deleted"]
+	return getProperty(id , "deleted")
 
 def isDeletedUsername(username):
 	id = getIdByUsername(username)
 	return isDeleted(id)
+
+def hasBooks(id):
+	books = getBooks(id)
+	return len(books) > 0
+
+def getBooks(id):
+	return getProperty(id, "books")
+
+def addBook(userID, bookID):
+	books = getBooks(userID)
+	if bookID in books:
+		print("Error. User", userID, "already has book", bookID)
+		return False
+
+	books.append(bookID)
+	return True
+
+def removeBook(userID, bookID):
+	books = getBooks(userID)
+	if bookID not in books:
+		print("Error. User", userID, "doesn't have book", bookID)
+		return False
+	
+	books.remove(bookID)
+	return True

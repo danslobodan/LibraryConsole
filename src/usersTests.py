@@ -1,81 +1,55 @@
 import users
+import view
 import tests
 
 
 tests.clear()
 
+view.printTitle("Testing users repository")
+
+uid = "888"
+bid = "1"
 user = { 
-	"username" : "irena" , 
-	"password" : "",
-	"firstname" : "Irena" , 
-	"lastname" : "Posza"
+	"username" : "tusername" ,
+	"firstname" : "tfirstname" , 
+	"lastname" : "tlastname",
+	"deleted" : False,
+	"books" : []
 }
 
-print("Users tests")
-print("-" * 50)
+view.printTitle("Add user")
+tests.addResult(users.addUser(uid, user))
+tests.addResult(not users.addUser(uid, user))
 
-print ("Test add password missing")
-tests.addResult(not users.addAdmin(user))
-print("-" * 50)
+view.printTitle("Add book")
+tests.addResult(users.addBook(uid, bid))
+tests.addResult(not users.addBook(uid, bid))
 
-user["password"] = "irena"
+view.printTitle("Return book")
+tests.addResult(users.removeBook(uid, bid))
+tests.addResult(not users.removeBook(uid, bid))
 
-print("Test add admin")
-users.remove(user["username"])
-tests.addResult(users.addAdmin(user))
-user = users.get(user["username"])
-tests.addResult(user["isadmin"])
-users.remove(user["username"])
-print("-" * 50)
+view.printTitle("Has books")
+users.addBook(uid, bid)
+tests.addResult(users.hasBooks(uid))
+users.removeBook(uid, bid)
+tests.addResult(not users.hasBooks(uid))
 
-print("Test add user")
-tests.addResult(users.addUser(user))
-user = users.get(user["username"])
-tests.addResult(not user["isadmin"])
-users.remove(user["username"])
-print("-" * 50)
+view.printTitle("Get books")
+books = users.getBooks(uid)
+tests.addResult(len(books) == 0)
+tests.addResult(bid not in books)
+users.addBook(uid, bid)
+books = users.getBooks(uid)
+tests.addResult(len(books) == 1)
+tests.addResult(bid in books)
 
-print("Test add existing")
-users.addAdmin(user)
-tests.addResult(not users.addAdmin(user))
-users.remove(user["username"])
-print("-" * 50)
+view.printTitle("Remove book")
+tests.addResult(users.removeBook(uid, bid))
+tests.addResult(not users.removeBook(uid, bid))
 
-print("Test remove non-existing")
-tests.addResult(not users.remove("zika"))
-print("-" * 50)
-
-print("Test remove deleted")
-tests.addResult(not users.remove(user["username"]))
-print("-" * 50)
-
-print("Test remove existing")
-users.addUser(user)
-tests.addResult(users.remove(user["username"]))
-user = users.get(user["username"])
-if user is not None:
-	print(True)
-else:
-	print(False)
-print(user["deleted"])
-print("-" * 50)
-
-print("Test update non-existing")
-tests.addResult(not users.update(user))
-print("-" * 50)
-
-print("Test update deleted")
-users.remove(user["username"])
-tests.addResult(not users.update(user))
-print("-" * 50)
-
-print("Test update lastname")
-user["lastname"] = "Posza"
-users.addUser(user)
-user["lastname"] = "Dan"
-tests.addResult(users.update(user))
-updated = users.get(user["username"])
-print(user["lastname"] == updated["lastname"])
-print("-" * 50)
+view.printTitle("Remove user")
+tests.addResult(users.remove(uid))
+tests.addResult(not users.remove(uid))
 
 tests.printResult()
