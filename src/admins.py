@@ -31,9 +31,6 @@ def updateProperty(id, prop, value):
 def exists(id):
 	return repo.exists(ADMINS, id)
 
-def remove(id):
-	return repo.exists(ADMINS, id)
-
 def addAdmin(id, admin):
 	addOrUpdate(id, admin)
 

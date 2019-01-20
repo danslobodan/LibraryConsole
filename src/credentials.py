@@ -26,6 +26,3 @@ def getPassword(username):
 
 def exists(username):
 	return repo.exists(CREDENTIALS, username)
-
-def remove(username):
-	return repo.remove(CREDENTIALS, username)
