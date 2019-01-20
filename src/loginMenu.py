@@ -26,10 +26,12 @@ def Login():
             print(LOGIN_ERROR)
             return "login"
         else:
+            print("Logged in as user:", username)
             session.currentUser = username
             return "user"
 
     if admins.isAdmin(username):
+        print("Logged in as admin:", username)
         session.currentUser = username
         return "admin"
 
