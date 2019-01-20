@@ -1,4 +1,5 @@
 import repo
+import search
 
 BOOKS = "books"
 
@@ -75,21 +76,6 @@ def scrap(id, count):
     updateProperty(id, "total", tot)
     return True
 
-def search(searchString, criteria, matchID = False):
+def find(searchString, criteria, matchID = False):
     books = getBooks()
-    found = {}
-    for id in books:
-        book = books[id]
-        if ((matchID and searchString in id)
-            or match(book, criteria, searchString)):
-            found[id] = book
-    
-    return found
-
-def match(book, criteria, searchString):
-    for prop in criteria:
-        if searchString.lower() in book[prop].lower():
-            return True
-    
-    return False
-
+    return search.find(searchString, books, criteria, matchID)

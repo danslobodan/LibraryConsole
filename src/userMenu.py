@@ -17,7 +17,7 @@ def SearchBooks():
         print("Search aborted.")
         return USER_MENU
 
-    found = books.search(searchString, searchCriteria)
+    found = books.find(searchString, searchCriteria)
     if len(found) > 0:
         view.printTitle("Search results:")
         listView.printItems(found, booksView.printBook)

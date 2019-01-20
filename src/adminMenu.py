@@ -84,7 +84,7 @@ def EditBook():
 		print("Canceled edit.")
 		return ADMIN_MENU
 
-	found = books.search(searchString, searchCriteria, True)
+	found = books.find(searchString, searchCriteria, True)
 	if len(found) == 0:
 		print("No books match the search criteria.")
 		return ADMIN_MENU
