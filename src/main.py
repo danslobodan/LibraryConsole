@@ -1,4 +1,7 @@
 import menu
+import loginMenu
+import adminMenu
+import profileMenu
 
 print("Welcome to the library!")
 

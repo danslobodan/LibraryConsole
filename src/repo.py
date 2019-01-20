@@ -24,29 +24,21 @@ def addOrUpdate(name, key, value):
 
 def updateProperty(name, key, prop, value):
 	repo = getRepo(name)
-	if key in repo and prop in repo[name]:
+	key = str(key)
+	if key in repo and prop in repo[key]:
 		repo[key][prop] = value
 	save(name)
 
 def exists(name, key):
 	repo = getRepo(name)
+	key = str(key)
 	return key in repo
 
 def remove(name, key):
 	repo = getRepo(name)
+	key = str(key)
 	if key in repo:
 		del repo[key]
 		save(name)
 		return True
 	return False
-
-def validate(field, value):
-	if not value:
-		print("Field", field, "is required.")
-		return False
-		
-	if value.isspace():
-		print("Field", field, "must contain characters other than whitespace.")
-		return False
-
-	return True

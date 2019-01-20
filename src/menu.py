@@ -3,6 +3,9 @@ import repo
 MENUS = "menus"
 handlers = {}
 
+def printLine():
+	print("-" * 100)
+
 def getMenus():
 	return repo.getRepo(MENUS)
 
@@ -16,10 +19,12 @@ def registerHandler(menuName, handler):
 	handlers[menuName] = handler
 
 def printMenu(menu):
+	printLine()
 	print(menu["title"])
 	options = menu["options"]
 	for i in options:
 		print(i + ".", options[i]["text"])
+	printLine()
 
 def takeInput(menu):
 	num = input("Please enter a number: ")

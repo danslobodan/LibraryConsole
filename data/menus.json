@@ -9,20 +9,25 @@
 	"user" : {
 		"title" : "Main menu",
 		"options" : {
-			"1" : { "text" : "Rent a book", "menu" : "rentBook" },
-			"2" : { "text": "Return a book", "menu" : "returnBook" },
-			"3" : { "text" : "Logout", "menu" : "login" }
+			"1" : { "text" : "Lended books", "menu" : "lendedBooks" },
+			"2" : { "text": "Browse library", "menu" : "searchBooks" },
+			"3" : { "text" : "Edit profile" , "menu" : "editProfile" },
+			"4" : { "text" : "Logout", "menu" : "login" }
 		}
 	},
 	"admin" : {
 		"title" : "Main menu",
 		"options" : {
-			"1" : { "text" : "Add or modify books", "menu" : "modifyBook" },
-			"2" : { "text": "Add or modify users", "menu" : "modifyUser" },
-			"3" : { "text" : "Logout", "menu" : "login" }
+			"1" : { "text" : "Add or modify books", "menu" : "addOrUpdateBook" },
+			"2" : { "text" : "Add admin or user", "menu" : "addUsers" },
+			"3" : { "text": "Edit profile", "menu" : "editProfile" },
+			"4" : { "text" : "Book lending", "menu" : "bookLending" },
+			"5" : { "text" : "Scrap book", "menu" : "removeBook" },
+			"6" : { "text" : "Remove user", "menu" : "removeUser" },
+			"7" : { "text" : "Logout", "menu" : "login" }
 		}
 	},
-	"modifyBook" : {
+	"addOrUpdateBook" : {
 		"title" : "Add or modify books",
 		"options" : {
 			"1" : { "text" : "Add book", "menu" : "addBook" },
@@ -30,13 +35,12 @@
 			"3" : { "text" : "Back", "menu" : "admin" }
 		}
 	},
-	"modifyUser" : {
-		"title" : "Add or modify users",
+	"addUsers" : {
+		"title" : "Add users",
 		"options" : {
 			"1" : { "text" : "Add user", "menu" : "addUser" },
-			"2" : { "text" : "Edit user", "menu" : "editUser" },
-			"3" : { "text" : "Remove user", "menu" : "removeUser" },
-			"4" : { "text" : "Back", "menu" : "admin" }
+			"2" : { "text" : "Add admin", "menu" : "addAdmin" },
+			"3" : { "text" : "Back", "menu" : "admin" }
 		}
 	}
 }
