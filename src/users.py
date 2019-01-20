@@ -86,10 +86,10 @@ def getBooks(id):
 def addBook(userID, bookID):
 	books = getBooks(userID)
 	if bookID in books:
-		print("Error. User", userID, "already has book", bookID)
 		return False
 
 	books.append(bookID)
+	updateProperty(userID, "books", books)
 	return True
 
 def removeBook(userID, bookID):
@@ -99,4 +99,5 @@ def removeBook(userID, bookID):
 		return False
 	
 	books.remove(bookID)
+	updateProperty(userID, "books", books)
 	return True

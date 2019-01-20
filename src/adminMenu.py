@@ -123,8 +123,39 @@ def EditBook():
 	booksView.printBook(id, book)
 
 	return ADMIN_MENU
+
+def LendBook():
+
+	criteria = [ "author" , "year" ]
+	fBooks = searchView.find("books", books.getBooks(), criteria, True)
+	if len(fBooks) == 0:
+		return ADMIN_MENU
+
+	listView.printItems(fBooks, booksView.printBook)
+	bookID = listView.choseItem(fBooks)
+	if bookID == 0:
+		return ADMIN_MENU
+
+	criteria = [ "firstname" , "lastname" ]
+	fUsers = searchView.find("users", users.getUsers(), criteria, True)
+	if len(fUsers) == 0:
+		return ADMIN_MENU
+	
+	listView.printItems(fUsers, userView.printUser)
+	userID = listView.choseItem(fUsers)
+	if userID == 0:
+		return ADMIN_MENU
+
+	if users.addBook(userID, bookID):
+		print("Lended book", bookID, "to user", userID)
+	else:
+		print("User has already lended that book.")
+
+	return ADMIN_MENU
+
 menu.registerHandler("addUser", AddUser)
 menu.registerHandler("addAdmin", AddAdmin)
 menu.registerHandler("removeUser", RemoveUser)
 menu.registerHandler("addBook", AddBook)
 menu.registerHandler("editBook", EditBook)
+menu.registerHandler("lendBook", LendBook)
