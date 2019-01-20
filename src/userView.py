@@ -9,7 +9,7 @@ def printUsers(users):
 
 def choseUser(users):
 
-    id = str(input("Enter user id: "))
+    id = input("Enter user id: ")
     if not id:
         print("User not chosen.")
     elif not id.isnumeric():
