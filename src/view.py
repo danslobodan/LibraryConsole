@@ -6,9 +6,18 @@ def assertInput(inputName):
 
     return value
 
+def assertNumericInput(inputName):
+
+	value = assertInput(inputName)
+	while not value.isnumeric():
+		print(inputName, "must be a valid number.")
+		value = assertInput(inputName)
+
+	return value
+
 def validateInput(inputName):
 
-	value = input(inputName + ": ")
+	value = str(input(inputName + ": "))
 	if not value:
 		print(inputName, "is required.")
 		return ""
