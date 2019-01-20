@@ -33,15 +33,6 @@ def RemoveUser():
 	userView.printUsers(users.getUsers())
 	id = userView.choseUser(users.getUsers())
 	if id == 0:
-		print("User id", id, "is invalid.")
-		return ADMIN_MENU
-
-	if not users.exists(id):
-		print("User", id, "does not exist.")
-		return ADMIN_MENU
-		
-	if users.isDeleted(id):
-		print("User", id, "is already deleted.")
 		return ADMIN_MENU
 
 	user = users.getUser(id)
