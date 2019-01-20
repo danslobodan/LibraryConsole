@@ -16,7 +16,7 @@ def getActiveUsers():
 	return activeUsers
 
 def getUser(id):
-	return getUsers()[id]
+	return repo.getItem(USERS, id)
 
 def getIdByUsername(username):
 	users = getUsers()
