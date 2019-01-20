@@ -6,23 +6,18 @@ import session
 import view
 import listView
 import booksView
+import searchView
 
 USER_MENU = "user"
 
 def SearchBooks():
 
     searchCriteria = [ "author" , "title" ]
-    searchString = input("Enter author or title: ")
-    if not searchString or searchString.isspace():
-        print("Search aborted.")
-        return USER_MENU
+    found = searchView.find("books", books.getBooks(), searchCriteria, False)
 
-    found = books.find(searchString, searchCriteria)
     if len(found) > 0:
         view.printTitle("Search results:")
         listView.printItems(found, booksView.printBook)
-    else:
-        print("No books match the search criteria.", searchString)
 
     return USER_MENU
 

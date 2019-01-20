@@ -75,7 +75,3 @@ def scrap(id, count):
 
     updateProperty(id, "total", tot)
     return True
-
-def find(searchString, criteria, matchID = False):
-    books = getBooks()
-    return search.find(searchString, books, criteria, matchID)

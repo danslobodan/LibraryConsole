@@ -76,11 +76,6 @@ def isDeletedUsername(username):
 	id = getIdByUsername(username)
 	return isDeleted(id)
 
-def find(searchString):
-	users = getUsers()
-	criteria = [ "firstname", "lastname" ]
-	return search.find(searchString, users, criteria, True)
-
 def hasBooks(id):
 	books = getBooks(id)
 	return len(books) > 0

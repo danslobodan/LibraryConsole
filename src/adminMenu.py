@@ -12,6 +12,7 @@ import listView
 import credentialView
 import userView
 import booksView
+import searchView
 
 ADMIN_MENU = "admin"
 
@@ -79,12 +80,7 @@ def AddBook():
 def EditBook():
 
 	searchCriteria = [ "author" , "year" ]
-	searchString = input("Enter id, author or year: ")
-	if not searchString or searchString.isspace():
-		print("Canceled edit.")
-		return ADMIN_MENU
-
-	found = books.find(searchString, searchCriteria, True)
+	found = searchView.find("books", books.getBooks(), searchCriteria, True)
 	if len(found) == 0:
 		print("No books match the search criteria.")
 		return ADMIN_MENU

@@ -61,13 +61,4 @@ tests.addResult(not books.scrap(id, 5))
 tests.addResult(books.scrap(id, 1))
 tests.addResult(not books.scrap(id, 1))
 
-criteria = [ "author", "title" ]
-
-view.printLine()
-print("Search")
-found = books.find("88", criteria, True)
-tests.addResult(len(found) == 1)
-found = books.find("dum dum", criteria)
-tests.addResult(len(found) == 0)
-
 tests.printResult()

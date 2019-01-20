@@ -23,7 +23,6 @@ def getId(items):
 def choseItem(items):
 
     if len(items) == 0:
-        print("Error. No items to chose from.")
         return 0
 
     if len(items) == 1:
