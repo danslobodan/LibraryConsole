@@ -26,6 +26,22 @@ def AddUser():
 
 	return ADMIN_MENU
 
+def AddAdmin():
+
+	menu.printLine()
+	print("Enter admin details: ")
+
+	cred = credentialView.getCredentials(credentials.getCredentials())
+	id = userView.getUserId(admins.getAdmins())
+	user = userView.getUser()
+
+	user["username"] = cred["username"]
+	credentials.addOrUpdate(cred["username"], cred["password"])
+	admins.addAdmin(id, user)
+	print("Added user:", cred["username"])
+
+	return ADMIN_MENU
+
 def RemoveUser():
 
 	menu.printLine()
@@ -42,4 +58,5 @@ def RemoveUser():
 
 
 menu.registerHandler("addUser", AddUser)
+menu.registerHandler("addAdmin", AddAdmin)
 menu.registerHandler("removeUser", RemoveUser)
