@@ -21,13 +21,18 @@ def Login():
         print(LOGIN_ERROR)
         return "login"
 
+    if users.isUser(username):
+        if users.isDeleted(users.getIdByUsername(username)):
+            print(LOGIN_ERROR)
+            return "login"
+        else:
+            session.currentUser = username
+            return "user"
+
     if admins.isAdmin(username):
         session.currentUser = username
         return "admin"
 
-    if users.isUser(username):
-        session.currentUser = username
-        return "user"
 
     print("Error. No user with username: ", username)
     return "login"
