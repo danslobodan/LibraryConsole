@@ -39,8 +39,8 @@
 		"title" : "Add users",
 		"options" : {
 			"1" : { "text" : "Add user", "menu" : "addUser" },
-			"3" : { "text" : "Add admin", "menu" : "addAdmin" },
-			"4" : { "text" : "Back", "menu" : "admin" }
+			"2" : { "text" : "Add admin", "menu" : "addAdmin" },
+			"3" : { "text" : "Back", "menu" : "admin" }
 		}
 	}
 }
