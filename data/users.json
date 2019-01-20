@@ -1,1 +1,16 @@
-{"1": {"username": "dan", "firstname": "Slobodan", "lastname": "Dan", "deleted": false}, "2": {"username": "irena", "firstname": "Irena", "lastname": "Posza", "deleted": false}}
+{
+    "1": {
+        "username": "dan",
+        "firstname": "Slobodan",
+        "lastname": "Dan",
+        "deleted": false,
+        "books" : []
+    },
+    "2": {
+        "username": "irena",
+        "firstname": "Irena",
+        "lastname": "Posza",
+        "deleted": false,
+        "books" : []
+    }
+}
