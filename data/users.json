@@ -4,7 +4,7 @@
         "firstname": "Slobodan",
         "lastname": "Dan",
         "deleted": false,
-        "books" : []
+        "books" : [ "3" ]
     },
     "2": {
         "username": "irena",
