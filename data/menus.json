@@ -10,7 +10,7 @@
 		"title" : "Main menu",
 		"options" : {
 			"1" : { "text" : "Lended books", "menu" : "lendedBooks" },
-			"2" : { "text": "Browse library", "menu" : "searchBooks" },
+			"2" : { "text": "Browse library", "menu" : "userSearchBooks" },
 			"3" : { "text" : "Edit profile" , "menu" : "editProfile" },
 			"4" : { "text" : "Logout", "menu" : "login" }
 		}
