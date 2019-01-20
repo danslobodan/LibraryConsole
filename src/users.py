@@ -30,7 +30,7 @@ def isUser(username):
 			return True
 	return False
 
-def addOrUpdate(id, user):
+def addUser(id, user):
 	repo.addOrUpdate(USERS, id, user)
 
 def updateProperty(id, prop, value):
@@ -41,9 +41,6 @@ def exists(id):
 
 def remove(id):
 	repo.updateProperty(USERS, id, "deleted", True)
-
-def addUser(id, user):
-	addOrUpdate(id, user)
 
 def isDeleted(id):
 	return getUser(id)["deleted"]

@@ -22,7 +22,7 @@ def isAdmin(username):
 			return True
 	return False
 
-def addOrUpdate(id, admin):
+def addAdmin(id, admin):
 	repo.addOrUpdate(ADMINS, id, admin)
 
 def updateProperty(id, prop, value):
@@ -30,9 +30,6 @@ def updateProperty(id, prop, value):
 
 def exists(id):
 	return repo.exists(ADMINS, id)
-
-def addAdmin(id, admin):
-	addOrUpdate(id, admin)
 
 def isDeleted(id):
 	return getAdmin(id)["deleted"]
