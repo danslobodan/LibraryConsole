@@ -11,7 +11,12 @@ def getRepo(name):
 		with open(path(name), "r") as file:
 			repo = json.load(file)
 			repos[name] = repo
+	
 	return repos[name]
+
+def getItem(name, key):
+	repo = getRepo(name)
+	return repo[key]
 
 def save(name):
 	with open(path(name), "w") as file:
@@ -27,6 +32,7 @@ def updateProperty(name, key, prop, value):
 	key = str(key)
 	if key in repo and prop in repo[key]:
 		repo[key][prop] = value
+	
 	save(name)
 
 def exists(name, key):
@@ -41,4 +47,5 @@ def remove(name, key):
 		del repo[key]
 		save(name)
 		return True
+	
 	return False
