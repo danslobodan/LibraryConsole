@@ -1,6 +1,11 @@
 def printLine():
 	print("-" * 100)
 
+def printTitle(title):
+	printLine()
+	print(title)
+	printLine()
+
 def assertInput(inputName):
 
     value = validateInput(inputName)
