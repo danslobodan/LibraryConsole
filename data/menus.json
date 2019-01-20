@@ -22,7 +22,7 @@
 			"2" : { "text" : "Add admin or user", "menu" : "addUsers" },
 			"3" : { "text": "Edit profile", "menu" : "editProfile" },
 			"4" : { "text" : "Book lending", "menu" : "bookLending" },
-			"5" : { "text" : "Scrap book", "menu" : "removeBook" },
+			"5" : { "text" : "Scrap books", "menu" : "scrapBook" },
 			"6" : { "text" : "Remove user", "menu" : "removeUser" },
 			"7" : { "text" : "Logout", "menu" : "login" }
 		}

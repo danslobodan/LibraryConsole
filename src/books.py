@@ -68,10 +68,14 @@ def returnBook(id):
     return True
 
 def scrap(id, count):
-    tot = total(id) - count
-    if tot < 0:
-        print("Error. Cannot scap", count, "copies of book", id, ". Only", total(id), "left.")
+    av = available(id) - count
+    if av < 0:
+        print("Error. Cannot scap", count, "copies of book", id, ". Only", available(id), "available.")
         return False
 
+    tot = total(id) - count
+
+    updateProperty(id, "available", av)
     updateProperty(id, "total", tot)
+    
     return True

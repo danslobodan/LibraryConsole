@@ -190,6 +190,29 @@ def ReturnBook():
 
 def ScrapBook():
 
+	criteria = [ "author" , "year" ]
+	fBooks = searchView.find("books", books.getBooks(), criteria, True)
+	if len(fBooks) == 0:
+		return ADMIN_MENU
+
+	listView.printItems(fBooks, booksView.printBook)
+	bookID = listView.choseItem(fBooks)
+	if bookID == 0:
+		return ADMIN_MENU
+
+	count = int(view.optionalNumeric("Count", "0"))
+	if count == 0:
+		print("Canceled.")
+		return ADMIN_MENU
+	
+	available = int(books.available(bookID))
+	if count > available:
+		print("Only", available, "books available currently in the library.")
+		return ADMIN_MENU
+
+	books.scrap(bookID, count)
+	print("Scrapped", count, "books", bookID)
+	
 	return ADMIN_MENU
 
 menu.registerHandler("addUser", AddUser)
