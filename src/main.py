@@ -9,6 +9,10 @@ view.printTitle("Welcome to the library!")
 
 nextMenu = menu.showMenu("login")
 while nextMenu != "exit":
-	nextMenu = menu.showMenu(nextMenu)
+	try:
+		nextMenu = menu.showMenu(nextMenu)		
+	except Exception as ex:
+		print(ex)
+		nextMenu = menu.showMenu("login")
 
 print("Goodbye!")
