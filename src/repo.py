@@ -8,9 +8,13 @@ def path(repo):
 
 def getRepo(name):
 	if name not in repos:
-		with open(path(name), "r") as file:
-			repo = json.load(file)
-			repos[name] = repo
+		try:
+			with open(path(name), "r") as file:
+				repo = json.load(file)
+				repos[name] = repo
+		except Exception as ex:
+			print("Cannot open", name, ex)
+			repos[name] = {}
 	
 	return repos[name]
 
@@ -19,8 +23,12 @@ def getItem(name, key):
 	return repo[key]
 
 def save(name):
-	with open(path(name), "w") as file:
-		json.dump(repos[name], file)
+	try:
+		with open(path(name), "w") as file:
+			json.dump(repos[name], file)
+	except Exception as ex:
+		print("Cannot write", name, ex)
+
 
 def addOrUpdate(name, key, value):
 	repo = getRepo(name)
