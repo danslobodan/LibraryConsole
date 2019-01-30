@@ -28,7 +28,7 @@ def AddUser():
 
 	user["username"] = cred["username"]
 	user["deleted"] = False
-	user["books"] = []
+	
 	credentials.add(cred["username"], cred["password"])
 	users.addUser(id, user)
 	print("Added user:", cred["username"])
