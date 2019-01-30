@@ -1,6 +1,7 @@
 import menu
 import books
 import users
+import lending
 import session
 
 import view
@@ -24,11 +25,11 @@ def SearchBooks():
 def UserBooks():
 
     userID = users.getIdByUsername(session.currentUser)
-    if not users.hasBooks(userID):
+    if not lending.hasBooks(userID):
         print("You currently do not have any books lended.")
         return USER_MENU
 
-    userBooks = users.getBooks(userID)
+    userBooks = lending.getBooks(userID)
     view.printTitle("Lended books:")
     for bookID in userBooks:
         book = books.getBook(bookID)
